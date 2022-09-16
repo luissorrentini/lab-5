@@ -1,5 +1,5 @@
 #include <iostream>
-#include <math.h>
+#include<cmath>
 #include <string>
 
 using namespace std;
@@ -52,7 +52,14 @@ public:
 	}
 
 	// Default Constructor
-	Planet();
+	Planet()
+	this->name="ALPHA";
+	this->population=0
+	this->diameter = 8975;
+	this->hasWater = true;
+	this->hasOxygen = true;
+	this->closestPlanet = "BETA";
+	this->galaxy = "GUARDIANS";
 
 	// Getters
 	string getName() const { return name; }
@@ -79,8 +86,36 @@ public:
 	}
 
 	// PART #1 EXERCISES
-	bool isHabitable();
-	string compareArea(Planet &p2);
-	double volumePlanet();
-	bool sameGalaxy(Planet &p2);
+	bool isHabitable(Planet p){
+		if(this->getHasWater()==true&&this->getHasOxygen()==true&&this->getArea()>3000){
+			return true;
+		}
+		else{
+			return false;
+		}
+		}
+	}
+	string compareArea(Planet &p2){
+		if (this->getArea()>p2.getArea()){
+			return p2.getName();
+		}
+		else{
+			return this->getName();
+		}
+	}
+
+	double volumePlanet(){
+		double r = this->getDiameter()/2;
+		double area=(4*acos(-1)*pow(r,3))/3;
+		return area;
+	}
+
+	bool sameGalaxy(Planet &p2){
+		if(this->getGalaxy().compare(p2.getGalaxy())==0){
+			return true;
+		}
+		else{
+			return false
+		}
+	}
 };

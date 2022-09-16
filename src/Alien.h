@@ -15,7 +15,13 @@ private:
 
 public:
     // Constructor
-    Alien(string name, int numEyes, int numVisitedPlanets, int numLives, string specialPower);
+    Alien(string name, int numEyes, int numVisitedPlanets, int numLives, string specialPower){
+        this->name=name;
+        this->numEyes=numEyes;
+        this->numVisitedPlanets=numVisitedPlanets;
+        this->numLives=numLives;
+        this->specialPower=specialPower;
+    }
 
     // Copy Constructor
     Alien(const Alien &alien);
@@ -28,11 +34,11 @@ public:
     string getSpecialPower() const { return specialPower; }
 
     // Setters
-    void setName(string name);
-    void setNumEyes(int numEyes);
-    void setNumVisitedPlanets(int numVisitedPlanets);
-    void setNumLives(int numLives);
-    void setSpecialPower(string specialPower);
+    void Alien::setName(string name){ this->name=name;}
+    void Alien::setNumEyes(int numEyes){this->numEyes=numEyes;}
+    void Alien::setNumVisitedPlanets(int numVisitedPlanets){this->numVisitedPlanets=numVisitedPlanets;}
+    void Alien::setNumLives(int numLives){this->numLives=numLives;}
+    void Alien::setSpecialPower(string specialPower){this->specialPower=specialPower;}
 
     string toString()
     {

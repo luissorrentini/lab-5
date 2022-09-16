@@ -59,8 +59,20 @@ A leader is determined by the following characteristics:
 */
 Alien Alien::determineTheLeader(Alien &alien)
 {
-    // YOUR CODE GOES HERE
-    return *this;
+    if(this->getNumVisitedPlanets()>alien.getNumVisitedPlanets()){
+        return *this;
+    }
+    else if(this->getNumVisitedPlanets()<alien.getNumVisitedPlanets()){
+        return alien;
+    }
+    else if(this->getNumEyes()>alien.getNumEyes()){
+        return *this;
+        
+    }
+    else if(this->getNumEyes()<alien.getNumEyes()){
+        return alien;
+    }
+        return *this;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,8 +82,9 @@ Add the given number of planets, to the target Alien visitedPlanets property.
 NOTE: You MUST use setters, you can assume the setters are already implemented on this exercise.
 */
 void Alien::addVisitedPlanets(int planetQty)
-{
-    // YOUR CODE GOES HERE
+{   
+    int newplanetsvisited = this->getNumVisitedPlanets()+planetQty;
+    this->setNumVisitedPlanets(newplanetsvisited);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,6 +102,14 @@ HINT: Use the compare method from string
 */
 void Alien::battle(Alien &enemy)
 {
+    if (this->getSpecialPower().compare(enemy.getSpecialPower())>0){
+        enemy.setNumLives(enemy.getNumLives()-1);}
+    else if(this->getSpecialPower().compare(enemy.getSpecialPower())<0){
+        this->setNumLives(this->getNumLives()-1);}
+    
+   else if (this->getSpecialPower().compare(enemy.getSpecialPower())==0){
+       enemy.setNumLives(enemy.getNumLives()-1);
+   }
     // YOUR CODE GOES HERE
 }
 
@@ -102,7 +123,10 @@ Exercise #11
  NOTE: DO NOT MODIFY THE TARGET OBJECT
 */
 bool Alien::willSurvive(int attackPower)
-{
-    // YOUR CODE GOES HERE
+{   
+    int newlives =this->getNumLives()-attackPower;
+    if(newlives>0){
+        return true;
+    }
     return false;
 }
