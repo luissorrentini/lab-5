@@ -64,3 +64,12 @@ Return true if the target planet and the parameter planet are in the same galaxy
 False otherwise.
 HINT: use the compare method of string
 */
+bool Planet::sameGalaxy(Planet &p2)
+{
+	if(this->getGalaxy().compare(p2.getGalaxy())==0){
+			return true;
+		}
+		else{
+			return false
+		}
+}
